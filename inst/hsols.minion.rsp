@@ -1,0 +1,27 @@
+MINION 3
+
+**VARIABLES**
+DISCRETE l[8,8] {0..8}
+
+**SEARCH**
+PRINT ALL
+
+**CONSTRAINTS**
+
+# Latin constraints
+
+<%
+x <- sapply(seq(0, 7, 2), function(x) alldiff(l(rep(x, 6), setdiff(0:7, x:(x + 1)))))
+y <- sapply(seq(1, 7, 2), function(x) alldiff(l(rep(x, 6), setdiff(0:7, x:(x + 1)))))
+cat(paste(x, y, sep = "\n"), sep = "\n")
+%>
+
+<%
+x <- sapply(seq(0, 7, 2), function(x) alldiff(l(setdiff(0:7, x:(x + 1)), rep(x, 6))))
+y <- sapply(seq(1, 7, 2), function(x) alldiff(l(setdiff(0:7, x:(x + 1)), rep(x, 6))))
+cat(paste(x, y, sep = "\n"), sep = "\n")
+%>
+
+# Holes
+
+# Self-orthgonality constraints
