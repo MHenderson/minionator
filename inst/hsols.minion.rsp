@@ -35,3 +35,32 @@ for(x in seq(0, 7)) {
 %>
 
 # Self-orthgonality constraints
+
+<%
+# From https://www.r-bloggers.com/identifying-records-in-data-frame-a-that-are-not-contained-in-data-frame-b-%E2%80%93-a-comparison/
+fun.12 <- function(x.1,x.2,...){
+  x.1p <- do.call("paste", x.1)
+  x.2p <- do.call("paste", x.2)
+  x.1[! x.1p %in% x.2p, ]
+}
+
+X <- {
+  H <- function(x) expand.grid(i = holes(x), j = holes(x))
+  rbind(H(0), H(2), H(4), H(6))
+}
+
+# Start with all (i, j, k, l)
+S <- expand.grid(i = 0:7, j = 0:7, k = 0:7, l = 0:7)
+# Filter out the empty ones
+S <- S[rownames(fun.12(S[, c("i", "j")], X)), ]
+S <- S[rownames(fun.12(S[, c("k", "l")], X)), ]
+# Filter out (i,j,k,l) where i = j and k = l
+S <- S[(S$i != S$k) | (S$j != S$l), ]
+# Order
+S <- S[order(S$i, S$j, S$k, S$l), ]
+
+x <- mapply(watchvecneq, S$i, S$j, S$k, S$l)
+cat(paste(x, collapse = "\n" ))
+%>
+
+**EOF**
