@@ -30,7 +30,9 @@ for(x in seq(0, 7, 2)) {
 }
 for(x in seq(0, 7)) {
   cat(occurrence(x, "_", holes(x) + 1, 0), sep = "\n")
+  cat(occurrence(x, "_", 0, 2), sep = "\n")
   cat(occurrence("_", x, holes(x) + 1, 0), sep = "\n")
+  cat(occurrence("_", x, 0, 2), sep = "\n")
 }
 %>
 
