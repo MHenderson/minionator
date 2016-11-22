@@ -2,6 +2,7 @@
 
 export(alldiff)
 export(eq)
+export(fun.12)
 export(hsols)
 export(l)
 export(occurrence)
