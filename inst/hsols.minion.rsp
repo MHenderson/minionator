@@ -1,7 +1,9 @@
 MINION 3
 
 **VARIABLES**
-DISCRETE l[8,8] {0..8}
+<%
+cat(sprintf("DISCRETE l[%s,%s] {0..%s}", N, N, N))
+%>
 
 **SEARCH**
 PRINT ALL
@@ -13,22 +15,22 @@ PRINT ALL
 ## Rows
 
 <%
-cat(sapply(seq(0, 7), row), sep = "\n")
+cat(sapply(seq(0, N - 1), row), sep = "\n")
 %>
 
 ## Columns
 
 <%
-cat(sapply(seq(0, 7), column), sep = "\n")
+cat(sapply(seq(0, N - 1), column), sep = "\n")
 %>
 
 # Holes
 
 <%
-for(x in seq(0, 7, 2)) {
+for(x in seq(0, N - 1, 2)) {
   cat(do.call(eq, expand.grid(i = holes(x), j = holes(x), k = 0)), sep = "\n")
 }
-for(x in seq(0, 7)) {
+for(x in seq(0, N - 1)) {
   cat(occurrence(x, "_", holes(x) + 1, 0), sep = "\n")
   cat(occurrence(x, "_", 0, 2), sep = "\n")
   cat(occurrence("_", x, holes(x) + 1, 0), sep = "\n")
@@ -39,20 +41,13 @@ for(x in seq(0, 7)) {
 # Self-orthgonality constraints
 
 <%
-# From https://www.r-bloggers.com/identifying-records-in-data-frame-a-that-are-not-contained-in-data-frame-b-%E2%80%93-a-comparison/
-fun.12 <- function(x.1,x.2,...){
-  x.1p <- do.call("paste", x.1)
-  x.2p <- do.call("paste", x.2)
-  x.1[! x.1p %in% x.2p, ]
-}
-
 X <- {
   H <- function(x) expand.grid(i = holes(x), j = holes(x))
   rbind(H(0), H(2), H(4), H(6))
 }
 
 # Start with all (i, j, k, l)
-S <- expand.grid(i = 0:7, j = 0:7, k = 0:7, l = 0:7)
+S <- expand.grid(i = 0:(N - 1), j = 0:(N - 1), k = 0:(N - 1), l = 0:(N - 1))
 # Filter out the empty ones
 S <- S[rownames(fun.12(S[, c("i", "j")], X)), ]
 S <- S[rownames(fun.12(S[, c("k", "l")], X)), ]
