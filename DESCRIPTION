@@ -13,3 +13,4 @@ RoxygenNote: 5.0.1
 Suggests: testthat
 URL: https://github.com/MHenderson/minionator
 BugReports: https://github.com/MHenderson/minionator/issues
+Imports: R.rsp
