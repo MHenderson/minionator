@@ -1,4 +1,11 @@
+#' Latin constraint on columns
+#'
+#' @param hole_spec
+#'
+#' @return
 #' @export
+#'
+#' @examples
 column <- function(hole_spec) {
   h <- holes(hole_spec)
   n <- size(hole_spec)

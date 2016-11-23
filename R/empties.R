@@ -1,3 +1,7 @@
+#' Holes as data.frame
+#
+#' @param hole_spec
+#'
 #' @export
 empties <- function(hole_spec) {
   h <- holes(hole_spec)

@@ -1,4 +1,9 @@
 #' Matrix variables
+#'
+#' @param p
+#' @param q
+#' @param name
+#'
 #' @export
 l <- function(p, q, name = "l") {
   s <- "["

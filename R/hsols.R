@@ -1,4 +1,7 @@
 #' HSOLS generator
+#'
+#' @param hole_spec_expr
+#'
 #' @export
 hsols <- function(hole_spec_expr) {
   s <- deparse(substitute(hole_spec_expr))
