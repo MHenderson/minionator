@@ -2,6 +2,12 @@ MINION 3
 
 **VARIABLES**
 <%
+ph <- parseholes(hole_str)
+N <- size(ph)
+h <- holes(ph)
+%>
+
+<%
 cat(sprintf("DISCRETE l[%s,%s] {0..%s}", N, N, N))
 %>
 
@@ -15,25 +21,26 @@ PRINT ALL
 ## Rows
 
 <%
-cat(sapply(seq(0, N - 1), row), sep = "\n")
+cat(sapply(seq(0, N - 1), row(ph)), sep = "\n")
 %>
 
 ## Columns
 
 <%
-cat(sapply(seq(0, N - 1), column), sep = "\n")
+cat(sapply(seq(0, N - 1), column(ph)), sep = "\n")
 %>
 
 # Holes
 
 <%
+
 for(x in seq(0, N - 1, 2)) {
-  cat(do.call(eq, expand.grid(i = holes(x), j = holes(x), k = 0)), sep = "\n")
+  cat(do.call(eq, expand.grid(i = h(x), j = h(x), k = 0)), sep = "\n")
 }
 for(x in seq(0, N - 1)) {
-  cat(occurrence(x, "_", holes(x) + 1, 0), sep = "\n")
+  cat(occurrence(x, "_", h(x) + 1, 0), sep = "\n")
   cat(occurrence(x, "_", 0, 2), sep = "\n")
-  cat(occurrence("_", x, holes(x) + 1, 0), sep = "\n")
+  cat(occurrence("_", x, h(x) + 1, 0), sep = "\n")
   cat(occurrence("_", x, 0, 2), sep = "\n")
 }
 %>
@@ -42,7 +49,7 @@ for(x in seq(0, N - 1)) {
 
 <%
 X <- {
-  H <- function(x) expand.grid(i = holes(x), j = holes(x))
+  H <- function(x) expand.grid(i = h(x), j = h(x))
   rbind(H(0), H(2), H(4), H(6))
 }
 
