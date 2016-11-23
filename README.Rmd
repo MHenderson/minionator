@@ -1,0 +1,35 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# minionator
+
+Generate [Minion](http://constraintmodelling.org/minion/) input files in R.
+
+## Installation
+
+You can install minionator from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("MHenderson/minionator")
+```
+
+## Example
+
+
+```{r example}
+library(minionator)
+
+hsols(2^4)
+```
