@@ -33,31 +33,25 @@ cat(sapply(seq(0, N - 1), column(ph)), sep = "\n")
 # Holes
 
 <%
-
 for(x in seq(0, N - 1, 2)) {
   cat(do.call(eq, expand.grid(i = h(x), j = h(x), k = 0)), sep = "\n")
 }
 for(x in seq(0, N - 1)) {
   cat(occurrence(x, "_", h(x) + 1, 0), sep = "\n")
-  cat(occurrence(x, "_", 0, 2), sep = "\n")
+  cat(occurrence(x, "_", 0, length(h(x))), sep = "\n")
   cat(occurrence("_", x, h(x) + 1, 0), sep = "\n")
-  cat(occurrence("_", x, 0, 2), sep = "\n")
+  cat(occurrence("_", x, 0, length(h(x))), sep = "\n")
 }
 %>
 
 # Self-orthgonality constraints
 
 <%
-X <- {
-  H <- function(x) expand.grid(i = h(x), j = h(x))
-  rbind(H(0), H(2), H(4), H(6))
-}
-
 # Start with all (i, j, k, l)
 S <- expand.grid(i = 0:(N - 1), j = 0:(N - 1), k = 0:(N - 1), l = 0:(N - 1))
 # Filter out the empty ones
-S <- S[rownames(fun.12(S[, c("i", "j")], X)), ]
-S <- S[rownames(fun.12(S[, c("k", "l")], X)), ]
+S <- S[rownames(fun.12(S[, c("i", "j")], empties(ph))), ]
+S <- S[rownames(fun.12(S[, c("k", "l")], empties(ph))), ]
 # Filter out (i,j,k,l) where i = j and k = l
 S <- S[(S$i != S$k) | (S$j != S$l), ]
 # Order
