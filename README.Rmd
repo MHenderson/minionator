@@ -31,5 +31,5 @@ devtools::install_github("MHenderson/minionator")
 ```{r example}
 library(minionator)
 
-hsols(2^4)
+hsols(1^2)
 ```
