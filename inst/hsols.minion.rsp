@@ -54,6 +54,8 @@ S <- S[rownames(fun.12(S[, c("i", "j")], empties(ph))), ]
 S <- S[rownames(fun.12(S[, c("k", "l")], empties(ph))), ]
 # Filter out (i,j,k,l) where i = j and k = l
 S <- S[(S$i != S$k) | (S$j != S$l), ]
+# Filter out (i,j,k,l) where i <= k
+S <- S[(S$i <= S$k), ]
 # Order
 S <- S[order(S$i, S$j, S$k, S$l), ]
 
