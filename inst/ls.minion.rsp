@@ -1,0 +1,33 @@
+MINION 3
+
+**VARIABLES**
+
+<%
+f <- function(i) paste0("l", sprintf("[%s, %s]", i, 0:(N - 1)))
+l <- matrix(unlist(lapply(0:(N - 1), f)), nrow = N)
+%>
+
+<%
+cat(sprintf("DISCRETE l[%s,%s] {0..%s}", N, N, N))
+%>
+
+**SEARCH**
+PRINT ALL
+
+**CONSTRAINTS**
+
+# Latin constraints
+
+## Rows
+
+<%
+cat(unlist(lapply(1:N, function(i) alldiff(l[i, ]))), sep = "\n")
+%>
+
+## Columns
+
+<%
+cat(unlist(lapply(1:N, function(i) alldiff(l[, i]))), sep = "\n")
+%>
+
+**EOF**
