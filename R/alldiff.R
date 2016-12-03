@@ -2,9 +2,8 @@
 #' vector p
 #'
 #' @param p
-#' @param name
 #'
 #' @export
-alldiff <- function(p, name = "l") {
-  sprintf("alldiff(%s)", p, name = "l")
+alldiff <- function(p) {
+  sprintf("alldiff(%s)", paste0(p, sep = "", collapse = ", "))
 }
