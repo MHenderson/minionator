@@ -5,5 +5,5 @@
 #'
 #' @export
 alldiff <- function(p) {
-  sprintf("alldiff(%s)", paste0(p, sep = "", collapse = ", "))
+  sprintf("alldiff([%s])", paste0(p, sep = "", collapse = ", "))
 }
