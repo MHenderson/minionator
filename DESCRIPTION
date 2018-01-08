@@ -1,7 +1,7 @@
 Package: minionator
 Type: Package
 Title: Generate Minion Input Files in R
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person("Matthew", "Henderson",
     email = "matthew.james.henderson@gmail.com",
     role = c("aut", "cre"))
@@ -14,3 +14,4 @@ Suggests: testthat
 URL: https://github.com/MHenderson/minionator
 BugReports: https://github.com/MHenderson/minionator/issues
 Imports: R.rsp
+Depends: rminion, R6

@@ -8,5 +8,5 @@ hsols <- function(hole_spec_expr) {
   template <- system.file("hsols.minion.rsp", package = "minionator")
   template_args <- list(hole_str = s)
   R.rsp::rsource(template, args = template_args)
-  R.rsp::rfile(template, args = template_args)
+  #R.rsp::rfile(template, args = template_args)
 }

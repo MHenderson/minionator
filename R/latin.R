@@ -1,11 +1,16 @@
-#' Latin square generator
-#'
-#' @param size Dimension of latin square
+#' Latin square Minion problem.
 #'
 #' @export
-latin <- function(size) {
-  template <- system.file("ls.minion.rsp", package = "minionator")
-  template_args <- list(N = size)
-  R.rsp::rsource(template, args = template_args)
-  R.rsp::rfile(template, args = template_args)
-}
+LatinSquare <- R6::R6Class("LatinSquare",
+  inherit = minionProblem,
+  public = list(
+   initialize = function(size, ...) {
+     super$initialize(size, ...)
+     private$template = system.file("ls.minion.rsp", package = "minionator")
+     private$template_args = list(
+       N = private$size,
+       l = private$variables
+     )
+   }
+  )
+)
