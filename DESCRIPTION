@@ -9,9 +9,8 @@ Maintainer: Matthew Henderson <matthew.james.henderson@gmail.com>
 Description: Generate input files for the Minion constraint solver.
 License: MIT + file LICENSE
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 7.1.0
 Suggests: testthat
 URL: https://github.com/MHenderson/minionator
 BugReports: https://github.com/MHenderson/minionator/issues
 Imports: R.rsp
-Depends: rminion, R6
