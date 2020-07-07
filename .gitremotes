@@ -1,6 +1,4 @@
 github	git@github.com:minion-r/minionator.git (fetch)
 github	git@github.com:minion-r/minionator.git (push)
-gitlab	git@github.com:minion-r/minionator.git (fetch)
-gitlab	git@github.com:minion-r/minionator.git (push)
-origin	git@github.com:minion-r/minionator.git (fetch)
-origin	git@github.com:minion-r/minionator.git (push)
+gitlab	git@gitlab.com:MHenderson1/minionator.git (fetch)
+gitlab	git@gitlab.com:MHenderson1/minionator.git (push)
