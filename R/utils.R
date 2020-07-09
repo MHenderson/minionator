@@ -1,8 +1,3 @@
-#' Convert Variable Dataframe Into Minion Variable String
-#'
-#' @param x A variable dataframe.
-#'
-#' @return A string representing the input variables
 make_args <- function(x) {
   x %>%
     dplyr::mutate(id = glue::glue("{name}[{row},{col}]") %>% as.character()) %>%
@@ -10,15 +5,6 @@ make_args <- function(x) {
     dplyr::pull(args)
 }
 
-#' Variable Declaration For Discrete Matrix
-#'
-#' Given a discrete variable dataframe create the variable
-#' declaration for Minion.
-#'
-#' @param X Discrete variable dataframe.
-#'
-#' @return Variable declaration string for input variable
-#' dataframe.
 discrete_to_str <- function(X) {
   X %>%
   dplyr::group_by(name) %>%
@@ -34,5 +20,3 @@ discrete_to_str <- function(X) {
     ") %>%
     glue::glue_collapse("\n")
 }
-
-
