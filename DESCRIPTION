@@ -13,4 +13,8 @@ RoxygenNote: 7.1.0
 Suggests: testthat
 URL: https://github.com/MHenderson/minionator
 BugReports: https://github.com/MHenderson/minionator/issues
-Imports: R.rsp
+Imports: 
+    dplyr,
+    purrr,
+    glue,
+    magrittr
