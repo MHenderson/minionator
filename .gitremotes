@@ -1,4 +1,8 @@
+bucket	git@bitbucket.org:matthew/minionator.git (fetch)
+bucket	git@bitbucket.org:matthew/minionator.git (push)
 github	git@github.com:minion-r/minionator.git (fetch)
 github	git@github.com:minion-r/minionator.git (push)
 gitlab	git@gitlab.com:MHenderson1/minionator.git (fetch)
 gitlab	git@gitlab.com:MHenderson1/minionator.git (push)
+srht	git@git.sr.ht:~mhenderson/minionator (fetch)
+srht	git@git.sr.ht:~mhenderson/minionator (push)
