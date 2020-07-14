@@ -1,18 +1,29 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  message = FALSE
+)
+```
 
 # minionator
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
-The goal of minionator is to …
+The goal of minionator is to ...
 
 ## Installation
 
-You can install the released version of minionator from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of minionator from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("minionator")
@@ -22,7 +33,7 @@ install.packages("minionator")
 
 This is a basic example which shows you how to solve a common problem:
 
-``` r
+```{r example}
 library(minionator)
 library(tidyverse)
 
@@ -48,19 +59,6 @@ list(
   unary_constraints = bind_rows(row_latin, column_latin)
 ) %>%
   minion_output()
-#> MINION 3
-#> **VARIABLES**
-#> DISCRETE l[3,3] {0..2}
-#> **SEARCH**
-#> PRINT ALL
-#> **CONSTRAINTS**
-#> alldiff([l[0,0],l[0,1],l[0,2]])
-#> alldiff([l[1,0],l[1,1],l[1,2]])
-#> alldiff([l[2,0],l[2,1],l[2,2]])
-#> alldiff([l[0,0],l[1,0],l[2,0]])
-#> alldiff([l[0,1],l[1,1],l[2,1]])
-#> alldiff([l[0,2],l[1,2],l[2,2]])
-#> 
-#> 
-#> **EOF**
 ```
+
+
