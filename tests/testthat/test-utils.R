@@ -22,3 +22,22 @@ test_that("discrete_to_str works", {
     expected = "DISCRETE p[2,2] {1..2}"
   )
 })
+
+
+test_that("minion_to_str works", {
+  expect_equal(
+    object = names(minion_to_str(
+      list(
+        variables = discrete_matrix(1, 1, 1:1),
+        search = "PRINT ALL"
+      )
+    )),
+    expected = names(list(
+      variables = "DISCRETE l[1,1] {1..1}",
+      search = "PRINT ALL",
+      unary_constraints = "",
+      binary_constraints = "",
+      binary_vec_constraints = ""
+    ))
+  )
+})

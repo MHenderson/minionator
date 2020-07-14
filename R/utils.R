@@ -22,3 +22,13 @@ discrete_to_str <- function(X) {
     ") %>%
     glue::glue_collapse("\n")
 }
+
+minion_to_str <- function(x) {
+  list(
+    variables              = discrete_to_str(x$variables),
+    search                 = x$search,
+    unary_constraints      = unary_constraints_to_str(x$unary_constraints),
+    binary_constraints     = binary_constraints_to_str(x$binary_constraints),
+    binary_vec_constraints = binary_vec_constraints_to_str(x$binary_vec_constraints)
+  )
+}

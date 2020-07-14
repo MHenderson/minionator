@@ -32,15 +32,9 @@ discrete_matrix <- function(nrow, ncol, domain, name = "l") {
 #' @return A complete Minion 3 input string.
 #' @export
 minion_output <- function(x) {
-  list(
-    variables              = discrete_to_str(x$variables),
-    search                 = x$search,
-    unary_constraints      = unary_constraints_to_str(x$unary_constraints),
-    binary_constraints     = binary_constraints_to_str(x$binary_constraints),
-    binary_vec_constraints = binary_vec_constraints_to_str(x$binary_vec_constraints)
-  ) %>%
+  minion_to_str(x) %>%
     glue::glue_data(
-      "MINION 3
+"MINION 3
 **VARIABLES**
 {variables}
 **SEARCH**
