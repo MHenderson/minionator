@@ -3,3 +3,7 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^CONDUCT\.md$
+
+^_pkgdown.yml$
+^docs$
+^.gitremotes$

@@ -10,6 +10,7 @@ Description: Generate input files for the Minion constraint solver.
 License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 7.1.0
+Encoding: UTF-8
 Suggests: testthat
 URL: https://github.com/MHenderson/minionator
 BugReports: https://github.com/MHenderson/minionator/issues
@@ -17,4 +18,5 @@ Imports:
     dplyr,
     purrr,
     glue,
-    magrittr
+    magrittr,
+    rlang
