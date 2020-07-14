@@ -24,30 +24,91 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(minionator)
+
+(l <- discrete_matrix(3, 3, 0:2))
+#> # A tibble: 9 x 6
+#>     row   col lower upper name  type    
+#>   <int> <int> <int> <int> <chr> <chr>   
+#> 1     0     0     0     2 l     DISCRETE
+#> 2     1     0     0     2 l     DISCRETE
+#> 3     2     0     0     2 l     DISCRETE
+#> 4     0     1     0     2 l     DISCRETE
+#> 5     1     1     0     2 l     DISCRETE
+#> 6     2     1     0     2 l     DISCRETE
+#> 7     0     2     0     2 l     DISCRETE
+#> 8     1     2     0     2 l     DISCRETE
+#> 9     2     2     0     2 l     DISCRETE
+```
+
+``` r
 library(tidyverse)
 
-l <- discrete_matrix(3, 3, 0:2)
-
-row_latin <- tribble(
+(row_latin <- tribble(
   ~constraint,             ~variables,
     "alldiff", l %>% filter(row == 0),
     "alldiff", l %>% filter(row == 1),
     "alldiff", l %>% filter(row == 2)
-)
+))
+#> # A tibble: 3 x 2
+#>   constraint variables       
+#>   <chr>      <list>          
+#> 1 alldiff    <tibble [3 × 6]>
+#> 2 alldiff    <tibble [3 × 6]>
+#> 3 alldiff    <tibble [3 × 6]>
+```
 
-column_latin <- tribble(
+``` r
+(column_latin <- tribble(
   ~constraint,             ~variables,
     "alldiff", l %>% filter(col == 0),
     "alldiff", l %>% filter(col == 1),
     "alldiff", l %>% filter(col == 2)
-)
+))
+#> # A tibble: 3 x 2
+#>   constraint variables       
+#>   <chr>      <list>          
+#> 1 alldiff    <tibble [3 × 6]>
+#> 2 alldiff    <tibble [3 × 6]>
+#> 3 alldiff    <tibble [3 × 6]>
+```
 
-list(
+``` r
+(latin <- list(
           variables = l,
              search = "PRINT ALL",
   unary_constraints = bind_rows(row_latin, column_latin)
-) %>%
-  minion_output()
+))
+#> $variables
+#> # A tibble: 9 x 6
+#>     row   col lower upper name  type    
+#>   <int> <int> <int> <int> <chr> <chr>   
+#> 1     0     0     0     2 l     DISCRETE
+#> 2     1     0     0     2 l     DISCRETE
+#> 3     2     0     0     2 l     DISCRETE
+#> 4     0     1     0     2 l     DISCRETE
+#> 5     1     1     0     2 l     DISCRETE
+#> 6     2     1     0     2 l     DISCRETE
+#> 7     0     2     0     2 l     DISCRETE
+#> 8     1     2     0     2 l     DISCRETE
+#> 9     2     2     0     2 l     DISCRETE
+#> 
+#> $search
+#> [1] "PRINT ALL"
+#> 
+#> $unary_constraints
+#> # A tibble: 6 x 2
+#>   constraint variables       
+#>   <chr>      <list>          
+#> 1 alldiff    <tibble [3 × 6]>
+#> 2 alldiff    <tibble [3 × 6]>
+#> 3 alldiff    <tibble [3 × 6]>
+#> 4 alldiff    <tibble [3 × 6]>
+#> 5 alldiff    <tibble [3 × 6]>
+#> 6 alldiff    <tibble [3 × 6]>
+```
+
+``` r
+minion_output(latin)
 #> MINION 3
 #> **VARIABLES**
 #> DISCRETE l[3,3] {0..2}
