@@ -11,8 +11,8 @@
 #' over the given domain.
 #' @export
 discrete_matrix <- function(nrow, ncol, domain, name = "l") {
-  list(row = 0:(nrow - 1), col = 0:(ncol - 1)) %>%
-    purrr::cross_df() %>%
+  list(row = 0:(nrow - 1), col = 0:(ncol - 1)) |>
+    purrr::cross_df() |>
     dplyr::mutate(
       lower = min(domain),
       upper = max(domain),
@@ -32,7 +32,7 @@ discrete_matrix <- function(nrow, ncol, domain, name = "l") {
 #' @return A complete Minion 3 input string.
 #' @export
 minion_output <- function(x) {
-  minion_to_str(x) %>%
+  minion_to_str(x) |>
     glue::glue_data(
 "MINION 3
 **VARIABLES**
