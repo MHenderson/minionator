@@ -1,7 +1,8 @@
 #' @importFrom rlang .data
 make_args <- function(x) {
   x |>
-    dplyr::mutate(id = glue::glue("{name}[{row},{col}]") %>% as.character()) |>
+    dplyr::mutate(id = glue::glue("{name}[{row},{col}]") |>
+    as.character()) |>
     dplyr::summarise(args = glue::glue_collapse(.data$id, sep = ",")) |>
     dplyr::pull(args)
 }
