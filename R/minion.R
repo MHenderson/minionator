@@ -12,7 +12,7 @@
 #' @export
 discrete_matrix <- function(nrow, ncol, domain, name = "l") {
   list(row = 0:(nrow - 1), col = 0:(ncol - 1)) |>
-    purrr::cross_df() |>
+    tidyr::expand_grid() |>
     dplyr::mutate(
       lower = min(domain),
       upper = max(domain),
