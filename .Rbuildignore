@@ -7,3 +7,6 @@
 ^_pkgdown.yml$
 ^docs$
 ^.gitremotes$
+^minionator\.Rcheck$
+^minionator.*\.tar\.gz$
+^minionator.*\.tgz$
